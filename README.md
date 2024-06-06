@@ -4,4 +4,4 @@ Ini adalah kode sumber web app andreazetyawan (front end) yang dibuat menggunaka
 
 Web app andreazetyawan ini di hosting dengan vercel, kamu dapat mengunjungi di [andreazetyawan.id](https://andreazetyawan.id/).
 
-Web APP andreazetyawan adalah website yang berisi portfolio dan sarana berbagi informasi seputar dunia teknologi.
+Web APP andreazetyawan adalah website pribadi yang berisi portfolio dan sarana berbagi informasi.
