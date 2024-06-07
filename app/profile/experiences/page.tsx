@@ -6,7 +6,7 @@ const experiences = Experiences;
 export default function WorkExperiences() {
   return (
     <div className="pt-16 lg:pt-8 max-w-4xl text-left px-6">
-      <h2 className="text-2xl font-semibold">
+      <h2 className="text-2xl font-semibold mb-3">
         Pengalaman Kerja
       </h2>
       <p className="flex mb-6 text-sm opacity-50">
