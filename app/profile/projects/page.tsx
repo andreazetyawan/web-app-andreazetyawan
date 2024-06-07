@@ -9,7 +9,7 @@ export default function ListProjects() {
       <h2 className="text-2xl font-semibold">
         Daftar Proyek
       </h2>
-      <p className="flex mb-10 text-sm opacity-50">
+      <p className="flex mb-6 text-sm opacity-50">
         Proyek pertama kali yang pernah saya buat saat magang di salah satu sekolah negeri surakarta, berikut adalah daftar proyek yang pernah saya buat.
       </p>
       

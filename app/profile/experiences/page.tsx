@@ -9,7 +9,7 @@ export default function WorkExperiences() {
       <h2 className="text-2xl font-semibold">
         Pengalaman Kerja
       </h2>
-      <p className="flex mb-10 text-sm opacity-50">
+      <p className="flex mb-6 text-sm opacity-50">
         Saya mulai bekerja sejak tahun 2017, berikut adalah daftar riwayat pekerjaan yang pernah saya lakukan.
       </p>
       
