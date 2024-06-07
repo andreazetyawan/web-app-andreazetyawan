@@ -1,7 +1,13 @@
 export default function Footer() {
     return (
-        <p className="text-sm opacity-50 text-center static mt-4">
-        © 2024 Andreazetyawan, Boyolali, Jawa Tengah, Indonesia.
+        <div className="my-10 text-sm opacity-50 text-center static">
+        <p>
+            © 2024 Andreazetyawan
         </p>
+        <p>
+            Boyolali, Jawa Tengah,
+            Indonesia.
+        </p>
+        </div>
     );  
  }

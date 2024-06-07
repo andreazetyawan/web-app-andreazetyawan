@@ -6,9 +6,9 @@ const platform = Platform;
 
 export default function AboutMe() {
   return (
-    <div className="lg:mt-10 grid lg:mb-10 lg:w-full lg:max-w-3xl lg:text-left">
-        <div className="group rounded-lg border border-transparent p-4 transition-colors border-white bg-white dark:border-neutral-700 dark:bg-neutral-800/30">
-          <div className="lg:flex">
+    <div className="pt-16 lg:pt-8 max-w-4xl text-left px-6">
+        <div className="rounded-lg border border-transparent p-4 transition-colors border-white bg-white dark:border-neutral-700 dark:bg-neutral-800/30">
+          <div className="lg:flex lg:items-center">
             <div className="lg:w-1/3">
                 <Image
                   src="/img/pic/photo-profile.jpg"
@@ -16,8 +16,6 @@ export default function AboutMe() {
                   className="rounded-md"
                   width={500}
                   height={500}
-                  quality={100}
-                  priority
                 />
             </div>
             <div className="lg:w-2/3">

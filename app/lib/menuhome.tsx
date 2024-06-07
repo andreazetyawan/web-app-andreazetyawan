@@ -3,7 +3,7 @@ import Image from "next/image";
 const MenuHome = [
     { 
         id: '1', 
-        name: 'Lihat Profile Selengkapnya', 
+        name: 'Profile Selengkapnya', 
         href: '/profile/about-me',
         icon: <Image 
             src='/img/svg/menu-profile.svg'

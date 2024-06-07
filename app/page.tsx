@@ -4,7 +4,7 @@ import Footer from "./ui/footer";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen items-center p-16">
+    <main className="flex flex-col min-h-screen items-center p-0 lg:p-16">
       <Navbar />
         <Welcome />
       <Footer/>

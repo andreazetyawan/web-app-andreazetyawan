@@ -8,7 +8,7 @@ const menuprofile = [
         icon: <Image 
             src='/img/svg/menu-about-me.svg'
             alt='About Me'
-            className='dark:invert ml-2'
+            className='dark:invert'
             width={17}
             height={17}
             priority
@@ -21,7 +21,7 @@ const menuprofile = [
         icon: <Image 
             src='/img/svg/menu-experiences.svg'
             alt='Experiences'
-            className='dark:invert ml-2'
+            className='dark:invert'
             width={17}
             height={17}
             priority
@@ -34,7 +34,7 @@ const menuprofile = [
         icon: <Image 
             src='/img/svg/menu-projects.svg'
             alt='Projects'
-            className='dark:invert ml-2'
+            className='dark:invert'
             width={17}
             height={17}
             priority

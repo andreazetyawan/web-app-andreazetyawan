@@ -8,7 +8,7 @@ const Platform = [
         icon: <Image 
             src='/img/svg/platform-email.svg'
             alt='Email'
-            className='dark:invert my-4 mx-2'
+            className='dark:invert'
             width={25}
             height={25}
             priority
@@ -21,7 +21,7 @@ const Platform = [
       icon: <Image 
           src='/img/svg/platform-github.svg'
           alt='GitHub'
-          className='dark:invert my-4 mx-2'
+          className='dark:invert'
           width={25}
           height={25}
           priority
@@ -34,7 +34,7 @@ const Platform = [
         icon: <Image 
             src='/img/svg/platform-twitter.svg'
             alt='X'
-            className='dark:invert my-4 mx-2'
+            className='dark:invert'
             width={25}
             height={25}
             priority
@@ -47,7 +47,7 @@ const Platform = [
         icon: <Image 
             src='/img/svg/platform-instagram.svg'
             alt='Instagram'
-            className='dark:invert my-4 mx-2'
+            className='dark:invert'
             width={25}
             height={25}
             priority

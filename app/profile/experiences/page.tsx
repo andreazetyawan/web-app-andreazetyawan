@@ -5,7 +5,7 @@ const experiences = Experiences;
 
 export default function WorkExperiences() {
   return (
-    <div className="lg:mt-10 grid lg:mb-10 lg:w-full lg:max-w-3xl lg:text-left">
+    <div className="pt-16 lg:pt-8 max-w-4xl text-left px-6">
       <h2 className="text-2xl font-semibold">
         Pengalaman Kerja
       </h2>
