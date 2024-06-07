@@ -1,6 +1,7 @@
 {
-  "name": "web-app",
+  "name": "web-app-andreazetyawan",
   "version": "0.1.0",
+  "description": "web app andreazetyawan adalah website pribadi yang berisi portfolio dan sarana berbagi informasi.",
   "private": true,
   "scripts": {
     "dev": "next dev",
