@@ -27,7 +27,7 @@ body {
 }
 
 main {
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(8,8,92,1) 35%, rgba(0,0,0,1) 100%);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(4,11,13,1) 100%);
 }
 
 @layer utilities {

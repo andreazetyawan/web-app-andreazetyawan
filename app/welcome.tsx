@@ -11,7 +11,7 @@ export default function Welcome() {
               Hallo, selamat datang...
             </span>
           </div>
-          <h2 className="mt-3 lg:mt-5 text-3xl lg:text-5xl font-semibold">
+          <h2 className="mt-3 lg:mt-5 text-4xl lg:text-5xl font-semibold">
             Saya Andreazetyawan
           </h2>
           <p className="mt-3 text-sm opacity-50 static">
