@@ -8,10 +8,9 @@ export default function Dashboard() {
  
   useEffect(() => {
     fetch('https://api.andreazetyawan.id/v1', {
-      method: 'GET',  
-      mode: 'same-origin',
+      method: 'GET', 
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
         // Add any other headers as needed for your application
       },
     })
@@ -28,7 +27,7 @@ export default function Dashboard() {
  
   return (
     <div>
-      <h1>{data}</h1>
+      <h1>{data.message}</h1>
     </div>
   )
 }
