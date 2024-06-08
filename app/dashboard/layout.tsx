@@ -4,8 +4,8 @@ import Navbar from "../ui/profile/navbar";
 import Footer from "../ui/profile/footer";
 
 export const metadata: Metadata = {
-  title: "Andreazetyawan | Profile",
-  description: "Halaman profile web app andreazetyawan.",
+  title: "Andreazetyawan | Dasboard",
+  description: "Halaman dashboard Web app andreazetyawan.",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
