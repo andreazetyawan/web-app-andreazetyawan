@@ -1,8 +1,6 @@
-
-
 import { useState, useEffect } from 'react'
  
-function Profile() {
+export default function Dashboard() {
   const [data, setData] = useState(null)
   const [isLoading, setLoading] = useState(true)
  
