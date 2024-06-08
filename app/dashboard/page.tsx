@@ -1,17 +1,17 @@
 'use client'
 
 import { useState, useEffect } from "react"
- 
-export default function Dashboard() {
-  const [data, setData] = useState(null)
+
+function Dashboard() {
+  
+  const [data, setData] = useState({message:null})
   const [isLoading, setLoading] = useState(true)
- 
+
   useEffect(() => {
     fetch('https://api.andreazetyawan.id/v1', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json',
-        // Add any other headers as needed for your application
       },
     })
       .then((res) => res.json())
@@ -27,8 +27,9 @@ export default function Dashboard() {
  
   return (
     <div>
-      <h1>{data.message}</h1>
+      {data.message}
     </div>
-  )
+  );
 }
 
+export default Dashboard;
