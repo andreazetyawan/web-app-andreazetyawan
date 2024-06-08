@@ -1,3 +1,5 @@
+
+
 import { useState, useEffect } from 'react'
  
 function Profile() {
@@ -18,9 +20,8 @@ function Profile() {
  
   return (
     <div>
-      <h1>{data.message}</h1>
+      <h1>{data}</h1>
     </div>
   )
 }
 
-export default Profile;
