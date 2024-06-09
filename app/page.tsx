@@ -4,19 +4,7 @@ import Welcome from "./welcome";
 
 const menu = [
   { 
-      id: '1', 
-      name: 'My Profile', 
-      href: '/profile/about-me',
-      icon: <Image 
-          src='/img/svg/menu-profile.svg'
-          alt='Profile'
-          className='dark:invert ml-2'
-          width={17}
-          height={17}
-          />
-  },
-  { 
-    id: '2', 
+    id: '1', 
     name: 'Guest Book', 
     href: '/guest-book',
     icon: <Image 
@@ -26,6 +14,18 @@ const menu = [
         width={17}
         height={17}
         />
+  },
+  { 
+      id: '2', 
+      name: 'My Profile', 
+      href: '/profile/about-me',
+      icon: <Image 
+          src='/img/svg/menu-profile.svg'
+          alt='Profile'
+          className='dark:invert ml-2'
+          width={17}
+          height={17}
+          />
   }
 ]
 const logo = {

@@ -96,7 +96,6 @@ function AboutMe() {
                   {aboutme.description}
                 </p>
               </div>
-              {aboutme.connectme}
               <div className="mt-5 lg:ml-4 lg:mt-5">
                 <span className="flex text-sm opacity-50">
                   <Image 
@@ -106,7 +105,7 @@ function AboutMe() {
                   width={17}
                   height={17}
                   /> 
-                  
+                  {aboutme.connectme}
                 </span>
                 <ul className="flex">
                     {platform.map((media) => (

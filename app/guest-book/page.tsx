@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from "react";
 
-interface DataPage {
-  title: string | null;
-  description: string | null;
-}
 
-function Dashboard(datapage : DataPage) {
+function Dashboard() {
 
-  const [data, setData] = useState(datapage)
+  const [data, setData] = useState({
+    title: null,
+    description: null
+  })
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -27,12 +26,19 @@ function Dashboard(datapage : DataPage) {
       .catch(error => console.error('Error:', error));
   }, [])
  
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <p className="pt-16 lg:pt-8">Loading...</p>
+  if (!data) return <p className="pt-16 lg:pt-8">No data card...</p>
  
   return (
-    <div>
-      {data.title}
-      {data.description}
+    <div className="pt-16 lg:pt-8 max-w-4xl text-left px-6">
+        <div className="rounded-lg border border-transparent p-4 transition-colors border-white bg-white dark:border-neutral-700 dark:bg-neutral-800/30">      
+          <h2 className="text-2xl font-semibold mb-3">
+          {data.title}
+          </h2>
+          <p className="flex mb-3 text-md opacity-50">
+          {data.description}
+          </p>
+        </div>
     </div>
   );
 }
