@@ -1,27 +1,80 @@
 import Link from "next/link";
-import Platform from "./lib/platform";
+import Image from "next/image";
 
-const platform = Platform;
+const platform = [
+  { 
+      id: '1', 
+      name: 'Email', 
+      href: 'mailto:andreazetyawan@andreazetyawan.id', 
+      icon: <Image 
+          src='/img/svg/platform-email.svg'
+          alt='Email'
+          className='dark:invert'
+          width={25}
+          height={25}
+          />
+  },
+  { 
+    id: '2', 
+    name: 'GitHub', 
+    href: 'https://github.com/andreazetyawan', 
+    icon: <Image 
+        src='/img/svg/platform-github.svg'
+        alt='GitHub'
+        className='dark:invert'
+        width={25}
+        height={25}
+        />
+},
+  { 
+      id: '3', 
+      name: 'X', 
+      href: 'https://x.com/andreazetyawan',
+      icon: <Image 
+          src='/img/svg/platform-twitter.svg'
+          alt='X'
+          className='dark:invert'
+          width={25}
+          height={25}
+          />
+  },
+  { 
+      id: '4', 
+      name: 'Instagram', 
+      href: 'https://instagram.com/andreazetyawan',
+      icon: <Image 
+          src='/img/svg/platform-instagram.svg'
+          alt='Instagram'
+          className='dark:invert'
+          width={25}
+          height={25}
+          />
+  }
+]
 
-export default function Welcome() {
+const welcome = {
+  header: 'Hallo, selamat datang...',
+  titleheader: 'Saya Andreazetyawan',
+  description: 'Saya seorang developer website, memulai karir dibidang developer website pada tahun 2017. Sekarang saya bekerja dibidang digital marketing dengan mengelola website, media sosial serta pembuatan konten untuk tujuan pemasaran digital.',
+  connectme: 'Terhubung dengan saya :'
+}
+
+function Welcome() {
   return (
       <div className="pt-16 lg:pt-8 max-w-4xl text-left lg:text-center px-6">
           <div className="pt-4">
             <span className="text-xl lg:text-xl bg-amber-500 text-black">
-              Hallo, selamat datang...
+              {welcome.header}
             </span>
           </div>
           <h2 className="mt-3 lg:mt-5 text-4xl lg:text-5xl font-semibold">
-            Saya Andreazetyawan
+            {welcome.titleheader}
           </h2>
           <p className="mt-3 text-sm opacity-50 static">
-            Saya seorang developer website, memulai karir dibidang developer website pada tahun 2017.
-          </p>
-          <p className="text-sm opacity-50 static">
-            Sekarang saya bekerja dibidang digital marketing dengan mengelola website, media sosial serta pembuatan konten untuk tujuan pemasaran digital.
+            {welcome.description}
           </p>
           <p className="mt-4 text-sm opacity-50 static">
-            Terhubung dengan saya :
+            {welcome.connectme}
           </p>
           <ul className="flex lg:justify-center">
               {platform.map((media) => (
@@ -35,3 +88,5 @@ export default function Welcome() {
       </div>
   );
 }
+
+export default Welcome;

@@ -1,10 +1,15 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
-function Dashboard() {
-  
-  const [data, setData] = useState({message:null})
+interface DataPage {
+  title: string | null;
+  description: string | null;
+}
+
+function Dashboard(datapage : DataPage) {
+
+  const [data, setData] = useState(datapage)
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -23,11 +28,11 @@ function Dashboard() {
   }, [])
  
   if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
  
   return (
     <div>
-      {data.message}
+      {data.title}
+      {data.description}
     </div>
   );
 }
