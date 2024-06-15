@@ -1,9 +1,6 @@
-import { lucia } from "@/lib/auth";
+import { db, lucia } from "@/lib/auth";
 import { generateIdFromEntropySize } from "lucia";
 import { hash } from "@node-rs/argon2";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -14,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		return;
 	}
 
-	const body: null | Partial<{ username: string; email: string; phoneNumber: string; password: string }> = req.body;
+	const body: null | Partial<{ username: string; password: string }> = req.body;
 	const username = body?.username;
 	if (
 		!username ||
@@ -24,20 +21,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	) {
 		res.status(400).json({
 			error: "Invalid Username"
-		});
-		return;
-	}
-	const email = body?.email;
-	if (!email || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/gi.test(email)) {
-		res.status(400).json({
-			error: "Invalid Email"
-		});
-		return;
-	}
-    const phoneNumber = body?.phoneNumber;
-	if (!phoneNumber || phoneNumber.length < 12) {
-		res.status(400).json({
-			error: "Invalid Phone Number"
 		});
 		return;
 	}
@@ -59,15 +42,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const userId = generateIdFromEntropySize(16); // 16 characters long
 
 	// TODO: check if username is already used
-    await prisma.user.create({
+	const checkUser = await db.user.findUnique({
+		where: {
+		  username: username,
+		},
+	  })
+	  if (checkUser) {
+		res.status(400).json({
+			error: "User already exit"
+		});
+		return;
+	}
+
+    const createUser = await db.user.create({
         data: {
             id: userId,
             username: username,
-            email: email,
-            phoneNumber: phoneNumber,
             password_hash: passwordHash
         },
     })
+	if (createUser) {
+		res.status(200).json({
+			message: "User succesfuly create"
+		});
+		return;
+	}
 
 	const session = await lucia.createSession(userId, {});
 	res.appendHeader("Set-Cookie", lucia.createSessionCookie(session.id).serialize())

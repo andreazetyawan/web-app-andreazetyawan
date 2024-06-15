@@ -1,22 +1,29 @@
-
-import { Lucia } from "lucia";
+import { Lucia, TimeSpan } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 // import { PrismaClient } from '@prisma/client/edge';
 import { PrismaClient } from "@prisma/client";
 
 const client = new PrismaClient();
+const db = client;
 
 const adapter = new PrismaAdapter(client.session, client.user);
 
 export const lucia = new Lucia(adapter, {
+	sessionExpiresIn: new TimeSpan(30, "d"), // no more active/idle
 	sessionCookie: {
+		name: "session",
 		// this sets cookies with super long expiration
 		// since Next.js doesn't allow Lucia to extend cookie expiration when rendering pages
 		expires: false,
 		attributes: {
 			// set to `true` when using HTTPS
-			secure: true
+			secure: true,
+			sameSite: "strict",
+			domain: "andreazetyawan.id"
 		}
+	},
+	getSessionAttributes:() =>{
+		return{};
 	},
 	getUserAttributes: (attributes) => {
 		return {
@@ -35,5 +42,7 @@ declare module "lucia" {
 }
 
 interface DatabaseUserAttributes {
-	username: string;
+	username	:string;
 }
+
+export{ db }
