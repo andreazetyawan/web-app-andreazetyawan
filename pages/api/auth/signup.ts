@@ -1,4 +1,4 @@
-import { db, lucia } from "@/lib/auth";
+import { db, lucia } from "@/lib/lucia/checkAuth";
 import { generateIdFromEntropySize } from "lucia";
 import { hash } from "@node-rs/argon2";
 
@@ -6,9 +6,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method !== "POST") {
-		// res.status(404).end();
-        res.status(404).json({ message: 'sorry, cant use GET method' });
-		return;
+		res.status(404).end();
+        // res.status(404).json({ message: 'sorry, cant use GET method' });
+		// return;
 	}
 
 	const body: null | Partial<{ username: string; password: string }> = req.body;
@@ -42,14 +42,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const userId = generateIdFromEntropySize(16); // 16 characters long
 
 	// TODO: check if username is already used
-	const checkUser = await db.user.findUnique({
+	const checkUser = await db.user.findUniqueOrThrow({
 		where: {
 		  username: username,
 		},
 	  })
 	  if (checkUser) {
 		res.status(400).json({
-			error: "User already exit"
+			error: "user already exists"
 		});
 		return;
 	}
@@ -58,12 +58,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         data: {
             id: userId,
             username: username,
-            password_hash: passwordHash
+            password: passwordHash
         },
     })
 	if (createUser) {
 		res.status(200).json({
-			message: "User succesfuly create"
+			message: "user created successfully"
 		});
 		return;
 	}

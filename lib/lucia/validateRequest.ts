@@ -1,4 +1,4 @@
-import { lucia } from "./auth";
+import { lucia } from "./checkAuth";
 import type { Session, User } from "lucia";
 import type { IncomingMessage, ServerResponse } from "http";
 

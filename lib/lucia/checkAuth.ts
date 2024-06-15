@@ -4,10 +4,9 @@ import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { PrismaClient } from "@prisma/client";
 
 const client = new PrismaClient();
-const db = client;
-
 const adapter = new PrismaAdapter(client.session, client.user);
 
+export const db = client;
 export const lucia = new Lucia(adapter, {
 	sessionExpiresIn: new TimeSpan(30, "d"), // no more active/idle
 	sessionCookie: {
@@ -18,8 +17,6 @@ export const lucia = new Lucia(adapter, {
 		attributes: {
 			// set to `true` when using HTTPS
 			secure: true,
-			sameSite: "strict",
-			domain: "andreazetyawan.id"
 		}
 	},
 	getSessionAttributes:() =>{
@@ -36,6 +33,7 @@ export const lucia = new Lucia(adapter, {
 // IMPORTANT!
 declare module "lucia" {
 	interface Register {
+		db: typeof db;
 		Lucia: typeof lucia;
 		DatabaseUserAttributes: DatabaseUserAttributes;
 	}
@@ -44,5 +42,3 @@ declare module "lucia" {
 interface DatabaseUserAttributes {
 	username	:string;
 }
-
-export{ db }
