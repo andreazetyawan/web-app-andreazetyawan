@@ -26,6 +26,18 @@ const menu = [
           width={17}
           height={17}
           />
+  },
+  { 
+      id: '3', 
+      name: 'Dashboard', 
+      href: '/profile/about-me',
+      icon: <Image 
+          src='/img/svg/menu-profile.svg'
+          alt='Profile'
+          className='dark:invert ml-2'
+          width={17}
+          height={17}
+          />
   }
 ]
 const logo = {

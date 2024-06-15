@@ -1,0 +1,31 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL") // uses connection pooling
+  directUrl = env("DATABASE_URL") // uses a direct connection
+}
+
+model User {
+  id            String      @default(cuid()) @id
+  avatar        String
+  username      String      @unique
+  email         String      @unique
+  phoneNumber   String      @unique
+  password      String  
+  createdAt     DateTime    @default(now()) @map(name: "created_at")
+  updatedAt     DateTime    @updatedAt @map(name: "updated_at")
+  sessions      Session[]
+  @@map(name: "users")
+}
+
+model Session {
+  id        String   @default(cuid()) @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
