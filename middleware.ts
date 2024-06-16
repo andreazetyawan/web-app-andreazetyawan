@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
   	const host = request.headers.get('host');
   	const origin = request.headers.get('origin');
 
-	if (!origin || !host || !verifyRequestOrigin(origin, [host])) {
+	if (!origin || !host || !verifyRequestOrigin(origin, [host, "www.andreazetyawan", "api.andreazetyawan", "andreazetyawan.id"])) {
 		return new NextResponse(null, {
 			status: 403
 		});
