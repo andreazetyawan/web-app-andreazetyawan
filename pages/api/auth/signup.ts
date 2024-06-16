@@ -5,11 +5,12 @@ import { hash } from "@node-rs/argon2";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler( req: NextApiRequest, res: NextApiResponse) {
 	if (req.method !== "POST") {
-		res.status(404).end();
-        // res.status(404).json({ message: 'sorry, cant use GET method' });
-		// return;
+		// res.status(404).end();
+        res.status(404).json({ message: 'sorry, cant use GET method' })
+		return;
+		// res.status(200).json({ message: 'Hello from Next.js!' })
 	}
 
 	const body: null | Partial<{ username: string; password: string }> = req.body;
