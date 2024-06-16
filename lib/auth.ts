@@ -1,4 +1,4 @@
-import prisma from "@/lib/db";
+import prisma from "@/lib/prisma";
 import { Lucia } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { webcrypto } from "crypto";

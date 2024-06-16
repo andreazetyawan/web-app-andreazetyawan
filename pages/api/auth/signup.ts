@@ -1,4 +1,4 @@
-import prisma from "@/lib/db";
+import prisma from "@/lib/prisma";
 import { lucia } from "@/lib/auth";
 import { generateIdFromEntropySize } from "lucia";
 import { hash } from "@node-rs/argon2";
