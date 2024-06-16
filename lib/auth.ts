@@ -13,8 +13,8 @@ export const lucia = new Lucia(adapter, {
 		expires: false,
 		attributes: {
 			// set to `true` when using HTTPS
-			secure: true,
-			// secure: process.env.NODE_ENV === "production"
+			// secure: true,
+			secure: process.env.NODE_ENV === "production"
 
 		}
 	},
