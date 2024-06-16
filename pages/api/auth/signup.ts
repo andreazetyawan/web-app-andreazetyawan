@@ -1,4 +1,5 @@
-import { db, lucia } from "@/lib/lucia/checkAuth";
+import prisma from "@/lib/db";
+import { lucia } from "@/lib/auth";
 import { generateIdFromEntropySize } from "lucia";
 import { hash } from "@node-rs/argon2";
 
@@ -42,9 +43,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const userId = generateIdFromEntropySize(16); // 16 characters long
 
 	// TODO: check if username is already used
-	const checkUser = await db.user.findUniqueOrThrow({
+	const checkUser = await prisma.user.findUnique({
 		where: {
-		  username: username,
+			username: username,
 		},
 	  })
 	  if (checkUser) {
@@ -54,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		return;
 	}
 
-    const createUser = await db.user.create({
+    const createUser = await prisma.user.create({
         data: {
             id: userId,
             username: username,
