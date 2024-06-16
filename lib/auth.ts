@@ -1,6 +1,9 @@
 import { Lucia, TimeSpan } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
-import prisma from "@/lib/db"
+import prisma from "@/lib/db";
+import { webcrypto } from "node:crypto";
+
+globalThis.crypto = webcrypto as Crypto;
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
@@ -15,6 +18,7 @@ export const lucia = new Lucia(adapter, {
 			// set to `true` when using HTTPS
 			secure: true,
 			// secure: process.env.NODE_ENV === "production"
+			// secure: !devMode // disable when `devMode` is `true`
 
 		}
 	},
