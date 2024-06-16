@@ -6,8 +6,8 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 	if (request.method === "GET") {
 		return NextResponse.next();
 	}
-	const originHeader = request.headers.get("https://www.andreazetyawan");
-	const hostHeader = request.headers.get("www.andreazetyawan");
+	const originHeader = request.headers.get("Origin");
+	const hostHeader = request.headers.get("Host");
 	if (!originHeader || !hostHeader || !verifyRequestOrigin(originHeader, [hostHeader])) {
 		return new NextResponse(null, {
 			status: 403
