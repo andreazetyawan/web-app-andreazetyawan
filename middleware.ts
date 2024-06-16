@@ -1,23 +1,17 @@
 import { verifyRequestOrigin } from "lucia";
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest): Promise<NextResponse> {
 	if (request.method === "GET") {
 		return NextResponse.next();
 	}
-	
-	// NOTE: You may need to use `X-Forwarded-Host` instead
-  	const host = request.headers.get('host');
-  	const origin = request.headers.get('origin');
-
-	if (!origin || !host || !verifyRequestOrigin(origin, [host, "www.andreazetyawan", "api.andreazetyawan", "andreazetyawan.id"])) {
+	const originHeader = request.headers.get("Origin");
+	const hostHeader = request.headers.get("Host");
+	if (!originHeader || !hostHeader || !verifyRequestOrigin(originHeader, [hostHeader, "www.andreazetyawan", "api.andreazetyawan", "andreazetyawan.id"])) {
 		return new NextResponse(null, {
 			status: 403
 		});
 	}
 	return NextResponse.next();
 }
-
-// export const config = {
-//   matcher: '/api/:path*',
-// }
