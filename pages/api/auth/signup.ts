@@ -43,25 +43,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const userId = generateIdFromEntropySize(16); // 16 characters long
 
 	// TODO: check if username is already used
-	// const checkUser = await prisma.user.findUnique({
-	// 	where: {
-	// 		username: username,
-	// 	},
-	//   })
-	//   if (checkUser) {
-	// 	res.status(400).json({
-	// 		error: "user already exists"
-	// 	});
-	// 	return;
-	// }
+	const checkUser = await prisma.user.findUnique({
+		where: {
+			username: username,
+		},
+	  })
+	  if (checkUser) {
+		res.status(400).json({
+			error: "user already exists"
+		});
+		return;
+	}
 
-    await prisma.user.create({
+    const createUser = await prisma.user.create({
         data: {
             id: userId,
             username: username,
             password: passwordHash
         },
     })
+	if (createUser) {
+		res.status(200).json({
+			message: "user created successfully"
+		});
+		return;
+	}
 
 	const session = await lucia.createSession(userId, {});
 	res.appendHeader("Set-Cookie", lucia.createSessionCookie(session.id).serialize())
