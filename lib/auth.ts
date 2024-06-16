@@ -1,11 +1,8 @@
 import prisma from "@/lib/prisma";
 import { Lucia } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
-import { webcrypto } from "crypto";
 import type { Session, User } from "lucia";
 import type { IncomingMessage, ServerResponse } from "http";
-
-globalThis.crypto = webcrypto as Crypto;
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
